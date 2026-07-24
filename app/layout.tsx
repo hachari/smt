@@ -1,17 +1,24 @@
 import type { Metadata } from "next";
-import { Nanum_Pen_Script } from "next/font/google";
+import { Nanum_Pen_Script, Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
-const nanumPenScript = Nanum_Pen_Script({
+export const nanum = Nanum_Pen_Script({
   weight: "400",
   subsets: ["latin"],
   display: "swap",
   adjustFontFallback: false,
 });
 
+const notoSans = Noto_Sans_KR({
+  weight: ["400", "500", "700"],
+  subsets: ["latin"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "채리 하차리 | 정신채리라",
-  description: "선생님들을 위한 교육용 웹 서비스",
+  title: "정신 채리라 | 고민 상담소",
+  description: "익명으로 고민을 남기면 채리 선생님이 진심을 담아 답장해 드립니다.",
 };
 
 export default function RootLayout({
@@ -22,45 +29,42 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body
-        className={`${nanumPenScript.className} bg-teal-900 text-slate-50 min-h-screen flex flex-col`}
+        className={`${notoSans.className} bg-teal-900 text-slate-50 min-h-screen flex flex-col`}
       >
-        {/* 상단 헤더: 서비스 로고(채리 하차리)와 네비게이션 바 공간 */}
         <header className="border-b-2 border-dashed border-slate-50/30 p-4 lg:p-6">
           <div className="max-w-4xl mx-auto flex items-center justify-between">
-            <h1 className="text-3xl md:text-4xl tracking-wider text-yellow-200">
-              채리 하차리
-            </h1>
+            <Link href="/" className={`${nanum.className} text-3xl md:text-4xl tracking-wider text-yellow-200 hover:text-yellow-300 transition-colors`}>
+              정신 채리라
+            </Link>
             <nav>
-              <ul className="flex space-x-6 text-2xl">
+              <ul className={`${nanum.className} flex space-x-6 text-2xl`}>
                 <li>
-                  <a href="#" className="hover:text-yellow-200 transition-colors">
-                    홈
-                  </a>
+                  <Link href="/write" className="hover:text-yellow-200 transition-colors">
+                    고민 보내기
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-yellow-200 transition-colors">
-                    소개
-                  </a>
+                  <Link href="/board" className="hover:text-yellow-200 transition-colors">
+                    공개 고민
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-yellow-200 transition-colors">
-                    기능
-                  </a>
+                  <Link href="/check" className="hover:text-yellow-200 transition-colors">
+                    답장 확인
+                  </Link>
                 </li>
               </ul>
             </nav>
           </div>
         </header>
 
-        {/* 메인 화면(Hero Section) 영역 */}
-        <main className="flex-1 max-w-4xl mx-auto w-full p-6 flex flex-col items-center justify-center">
+        <main className="flex-1 max-w-4xl mx-auto w-full p-4 md:p-6 flex flex-col">
           {children}
         </main>
 
-        {/* 하단 푸터: 카피라이트 공간 */}
-        <footer className="border-t-2 border-dashed border-slate-50/30 p-4 text-center">
+        <footer className={`${nanum.className} border-t-2 border-dashed border-slate-50/30 p-4 text-center mt-8`}>
           <p className="text-xl opacity-80">
-            &copy; {new Date().getFullYear()} 채리 하차리. All rights reserved.
+            &copy; {new Date().getFullYear()} 정신 채리라. All rights reserved.
           </p>
         </footer>
       </body>
