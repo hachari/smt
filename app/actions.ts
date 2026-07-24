@@ -3,7 +3,7 @@
 import { supabase } from '@/lib/supabase';
 import { Letter } from '@/lib/store';
 
-// 에러 처리 헬퍼
+// 에러 처리 헬퍼 (런타임 액션용)
 function checkSupabase() {
   if (!supabase) {
     throw new Error('Supabase 클라이언트가 초기화되지 않았습니다. 환경변수를 확인해주세요.');
@@ -90,9 +90,9 @@ export async function checkReplyAuth(id: string, password: string) {
 
 // 공개 게시판 글 가져오기
 export async function getPublicLetters() {
-  checkSupabase();
+  if (!supabase) return []; // 빌드 타임 에러 방지
 
-  const { data, error } = await supabase!
+  const { data, error } = await supabase
     .from('letters')
     .select('id, title, topic, reply_style, status, created_at')
     .eq('is_public', true)

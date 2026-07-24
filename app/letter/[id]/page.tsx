@@ -1,13 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { nanum } from '../../layout';
 import { checkReplyAuth, submitSatisfaction } from '@/app/actions';
 import { Letter } from '@/lib/store';
 import { ThumbsUp, ThumbsDown, Loader2 } from 'lucide-react';
 
-export default function LetterPage({ params }: { params: { id: string } }) {
+function LetterContent({ id }: { id: string }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const pw = searchParams.get('pw');
@@ -22,7 +22,7 @@ export default function LetterPage({ params }: { params: { id: string } }) {
       return;
     }
     const loadLetter = async () => {
-      const res = await checkReplyAuth(params.id, pw);
+      const res = await checkReplyAuth(id, pw);
       if (res.success && res.letter) {
         setLetter(res.letter);
       } else {
@@ -32,12 +32,12 @@ export default function LetterPage({ params }: { params: { id: string } }) {
       setLoading(false);
     };
     loadLetter();
-  }, [params.id, pw, router]);
+  }, [id, pw, router]);
 
   const handleSatisfaction = async (value: 'GOOD' | 'BAD') => {
     if (isEvaluating) return;
     setIsEvaluating(true);
-    await submitSatisfaction(params.id, value);
+    await submitSatisfaction(id, value);
     setLetter((prev) => prev ? { ...prev, satisfaction: value } : null);
     setIsEvaluating(false);
     alert('소중한 의견 감사합니다!');
@@ -122,5 +122,13 @@ export default function LetterPage({ params }: { params: { id: string } }) {
       )}
 
     </div>
+  );
+}
+
+export default function LetterPage({ params }: { params: { id: string } }) {
+  return (
+    <Suspense fallback={<div className="flex justify-center py-20"><Loader2 className="animate-spin text-yellow-200" size={48} /></div>}>
+      <LetterContent id={params.id} />
+    </Suspense>
   );
 }
