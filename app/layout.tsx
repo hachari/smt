@@ -47,6 +47,11 @@ export default function RootLayout({
                     답장 확인
                   </Link>
                 </li>
+                <li>
+                  <Link href="/math" className="hover:text-yellow-200 transition-colors flex items-center gap-1">
+                    🤖 튜터봇
+                  </Link>
+                </li>
               </ul>
             </nav>
           </div>
