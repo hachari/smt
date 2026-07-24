@@ -5,6 +5,8 @@ import "./globals.css";
 const nanumPenScript = Nanum_Pen_Script({
   weight: "400",
   subsets: ["latin"],
+  display: "swap",
+  adjustFontFallback: false,
 });
 
 export const metadata: Metadata = {
