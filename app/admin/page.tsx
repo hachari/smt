@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { adminGetLetters, adminUpdateLetter } from '@/app/actions';
 import { Letter } from '@/lib/store';
-import { nanum } from '../layout';
+import { nanum } from '@/lib/fonts';
 
 export default function AdminPage() {
   const [password, setPassword] = useState('');

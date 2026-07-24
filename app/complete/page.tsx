@@ -1,7 +1,7 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { nanum } from '../layout';
+import { nanum } from '@/lib/fonts';
 import Link from 'next/link';
 import { CheckCircle2, Home, MailOpen } from 'lucide-react';
 import { Suspense } from 'react';

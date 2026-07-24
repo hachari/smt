@@ -1,5 +1,5 @@
 import { getPublicLetters } from '@/app/actions';
-import { nanum } from '../layout';
+import { nanum } from '@/lib/fonts';
 import Link from 'next/link';
 import { Lock } from 'lucide-react';
 

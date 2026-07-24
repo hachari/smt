@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { nanum } from '../layout';
+import { nanum } from '@/lib/fonts';
 import { MailOpen, Search } from 'lucide-react';
 import { checkReplyAuth } from '@/app/actions';
 

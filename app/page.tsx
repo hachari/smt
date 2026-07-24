@@ -1,4 +1,4 @@
-import { nanum } from "./layout";
+import { nanum } from "@/lib/fonts";
 import { Pen, MailOpen } from "lucide-react";
 import Link from "next/link";
 

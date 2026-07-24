@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { submitLetter } from '@/app/actions';
-import { nanum } from '../layout';
+import { nanum } from '@/lib/fonts';
 import EmergencyAlert from '@/components/EmergencyAlert';
 import { Send } from 'lucide-react';
 

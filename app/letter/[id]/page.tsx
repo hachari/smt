@@ -2,7 +2,7 @@
 
 import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { nanum } from '../../layout';
+import { nanum } from '@/lib/fonts';
 import { checkReplyAuth, submitSatisfaction } from '@/app/actions';
 import { Letter } from '@/lib/store';
 import { ThumbsUp, ThumbsDown, Loader2 } from 'lucide-react';

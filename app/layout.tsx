@@ -1,14 +1,8 @@
 import type { Metadata } from "next";
-import { Nanum_Pen_Script, Noto_Sans_KR } from "next/font/google";
+import { Noto_Sans_KR } from "next/font/google";
+import { nanum } from "@/lib/fonts";
 import "./globals.css";
 import Link from "next/link";
-
-export const nanum = Nanum_Pen_Script({
-  weight: "400",
-  subsets: ["latin"],
-  display: "swap",
-  adjustFontFallback: false,
-});
 
 const notoSans = Noto_Sans_KR({
   weight: ["400", "500", "700"],
