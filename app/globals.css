@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    /* 아날로그 칠판 배경 느낌을 위한 추가 스타일링 시 여기에 작성합니다 */
+    background-color: #134e4a; /* bg-teal-900과 동일 */
+    color: #f8fafc; /* text-slate-50과 동일 */
+  }
+}
